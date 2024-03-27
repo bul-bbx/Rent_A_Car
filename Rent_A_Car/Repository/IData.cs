@@ -5,6 +5,6 @@ namespace Rent_A_Car.Repository
 {
     public interface IData
     {
-        bool AddNewCar(AddCarViewModel newcar);
+        bool AddNewCar(Car newcar);
     }
 }

@@ -32,7 +32,7 @@ namespace Rent_A_Car.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddCar([FromForm]AddCarViewModel model)
+        public IActionResult AddCar([FromForm]Car model)
         {
             if(!ModelState.IsValid)
                 return View(model);

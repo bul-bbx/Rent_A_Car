@@ -1,5 +1,5 @@
 ﻿@page
-@model Rent_A_Car.ViewModels.Car.AddCarViewModel
+@model Rent_A_Car.Data.Car;
 @{
     ViewBag.Title = "AddCar";
     Layout = "~/Views/Car/_CarLayout.cshtml";
@@ -56,6 +56,10 @@
         @Html.ValidationMessageFor(model => model.CarImage, "", new { @class = "text-danger" })
     </div>
     <br />
+    <div>
+        @Html.ValidationSummary();
+    </div>
+    <br/>
     <div class="row">
         <div class="col-md-6">
             <button type="reset" class="w-100 btn btn-lg btn-dark">Reset Form</button>

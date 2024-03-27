@@ -16,7 +16,7 @@ namespace Rent_A_Car.Repository
             _webhost = webhost;
         }
         [SupportedOSPlatform("windows")]
-        public bool AddNewCar(AddCarViewModel newcar)
+        public bool AddNewCar(Car newcar)
         {
             bool isSaved = false;
             OleDbConnection con = GetOleDbConnection();
