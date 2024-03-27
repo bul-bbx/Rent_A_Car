@@ -43,8 +43,8 @@ public class DbContext : IdentityDbContext<User>
             .HasForeignKey(u => u.UserId);
 
     }
-
-    public bool AddNewCar(AddCarViewModel newcar)
+    [SupportedOSPlatform("windows")]
+    public bool AddNewCar(Car newcar)
     {
         bool isSaved = false;
         OleDbConnection con = GetOleDbConnection();
@@ -88,11 +88,12 @@ public class DbContext : IdentityDbContext<User>
         return imagepath;
     }
 
+    [SupportedOSPlatform("windows")]
     private OleDbConnection GetOleDbConnection()
     {
         return new OleDbConnection(this._configuration.GetConnectionString("DbContextConnection"));
     }
-
+    [SupportedOSPlatform("windows")]
     private bool SaveData(string qry, OleDbConnection con)
     {
         bool isSaved = false;

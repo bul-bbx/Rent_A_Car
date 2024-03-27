@@ -28,11 +28,11 @@ namespace Rent_A_Car.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddCar([FromForm]AddCarViewModel model)
+        public IActionResult AddCar([FromForm]Car m)
         {
             if(!ModelState.IsValid)
-                return View(model);
-            bool isSaved = _authDbContext.AddNewCar(model);
+                return View(m);
+            bool isSaved = _authDbContext.AddNewCar(m);
             ViewBag.isSaved = isSaved;
             ModelState.Clear();
             return AddCar();
