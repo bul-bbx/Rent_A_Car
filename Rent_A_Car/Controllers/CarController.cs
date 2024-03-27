@@ -6,6 +6,8 @@ using Rent_A_Car.ViewModels.Car;
 using System.Data.OleDb;
 using System.Runtime.Versioning;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Build.Framework;
+using Rent_A_Car.Repository;
 
 namespace Rent_A_Car.Controllers
 {
@@ -13,10 +15,12 @@ namespace Rent_A_Car.Controllers
     public class CarController : Controller
     {
         private readonly DbContext _authDbContext;
+        private readonly IData _data;
 
-        public CarController(DbContext dbContext)
+        public CarController(DbContext dbContext, IData _data)
         {
             _authDbContext = dbContext;
+            this._data = _data;
         }
 
         [HttpGet]
@@ -28,14 +32,14 @@ namespace Rent_A_Car.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
-        public IActionResult AddCar([FromForm]Car m)
+        public async Task<IActionResult> AddCar([FromForm]AddCarViewModel model)
         {
             if(!ModelState.IsValid)
-                return View(m);
-            bool isSaved = _authDbContext.AddNewCar(m);
+                return View(model);
+            bool isSaved = _data.AddNewCar(model);
             ViewBag.isSaved = isSaved;
             ModelState.Clear();
-            return AddCar();
+            return View();
         }
 
 

@@ -8,9 +8,12 @@ using Rent_A_Car.Data;
 using Rent_A_Car;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication;
+using Rent_A_Car.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DbContextConnection");
+
+
 
 builder.Services.AddDbContext<Rent_A_Car.Data.DbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -35,6 +38,8 @@ builder.Services.Configure<AuthenticationOptions>(options =>
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient(typeof(IData), typeof(Data));
 
 var app = builder.Build();
 
