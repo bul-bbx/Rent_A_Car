@@ -35,7 +35,7 @@ namespace Rent_A_Car.Controllers
             bool isSaved = _authDbContext.AddNewCar(model);
             ViewBag.isSaved = isSaved;
             ModelState.Clear();
-            return View();
+            return AddCar();
         }
 
 
