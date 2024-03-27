@@ -1,0 +1,21 @@
+﻿@page
+@model Rent_A_Car.ViewModels.DeleteRoleViewModel
+@{
+    ViewBag.Title = "Delete Role";
+    Layout = "~/Views/Role/_RoleLayout.cshtml";
+}
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ExistingRoleName)
+        @Html.TextBoxFor(model => model.ExistingRoleName, new { @class = "form-control", autocomplete = "username", aria_required = "true" })
+        @Html.ValidationMessageFor(model => model.ExistingRoleName, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Delete Role</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

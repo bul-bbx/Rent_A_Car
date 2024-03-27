@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Rent_A_Car.ViewModels;
 using Rent_A_Car.Areas.Identity.Data;
 using Rent_A_Car.Data;
+using NuGet.Common;
 
 namespace Rent_A_Car.Controllers
 {
@@ -18,13 +19,13 @@ namespace Rent_A_Car.Controllers
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
-        private readonly AuthDbContext authDbContext;
+        private readonly Data.DbContext DbContext;
 
-        public RoleController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, AuthDbContext authDbContext) 
+        public RoleController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, Data.DbContext DbContext) 
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
-            this.authDbContext = authDbContext;
+            this.DbContext = DbContext;
         }
 
         [HttpGet]

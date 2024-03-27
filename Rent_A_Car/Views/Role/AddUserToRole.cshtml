@@ -1,0 +1,26 @@
+﻿@page
+@model Rent_A_Car.ViewModels.AddUserToRoleViewModel
+@{
+    ViewBag.Title = "Add User To Role";
+    Layout = "~/Views/Role/_RoleLayout.cshtml";
+}
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.User)
+        @Html.TextBoxFor(model => model.User, new { @class = "form-control", autocomplete = "username", aria_required = "true" })
+        @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Role)
+        @Html.TextBoxFor(model => model.Role, new { @class = "form-control", autocomplete = "username", aria_required = "true" })
+        @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Add User to Role</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

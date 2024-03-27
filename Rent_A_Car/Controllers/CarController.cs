@@ -12,9 +12,9 @@ namespace Rent_A_Car.Controllers
     [Authorize(Roles = "Admin")]
     public class CarController : Controller
     {
-        private readonly AuthDbContext _authDbContext;
+        private readonly DbContext _authDbContext;
 
-        public CarController(AuthDbContext dbContext)
+        public CarController(DbContext dbContext)
         {
             _authDbContext = dbContext;
         }

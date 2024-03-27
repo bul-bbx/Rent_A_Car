@@ -1,0 +1,72 @@
+﻿@page
+@model Rent_A_Car.ViewModels.Car.AddCarViewModel
+@{
+    ViewBag.Title = "AddCar";
+    Layout = "~/Views/Car/_CarLayout.cshtml";
+}
+
+<form asp-action="AddCar" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Brand)
+                @Html.TextBoxFor(model => model.Brand, new { @class = "form-control", autocomplete = "Brand", aria_required = "true" })
+                @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Model)
+                @Html.TextBoxFor(model => model.Model, new { @class = "form-control", autocomplete = "Model", aria_required = "true" })
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.RegistrationNumber)
+                @Html.TextBoxFor(model => model.RegistrationNumber, new { @class = "form-control", autocomplete = "Car Number", aria_required = "true" })
+                @Html.ValidationMessageFor(model => model.RegistrationNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description)
+        @Html.TextBoxFor(model => model.Description, new { @class = "form-control", autocomplete = "Description", aria_required = "true" })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Year)
+        @Html.TextBoxFor(model => model.Year, new { @class = "form-control", autocomplete = "Year", aria_required = "true" })
+        @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PassengerCapacity)
+        @Html.TextBoxFor(model => model.PassengerCapacity, new { @class = "form-control", autocomplete = "Passenger Capacity", aria_required = "true" })
+        @Html.ValidationMessageFor(model => model.PassengerCapacity, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.RentalPricePerDay)
+        @Html.TextBoxFor(model => model.RentalPricePerDay, new { @class = "form-control", autocomplete = "Rental Price Per Day", aria_required = "true" })
+        @Html.ValidationMessageFor(model => model.RentalPricePerDay, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CarImage)
+        @Html.TextBoxFor(model => model.CarImage, new { @class = "form-control", type  = "file", aria_required = "true" })
+        @Html.ValidationMessageFor(model => model.CarImage, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <button type="reset" class="w-100 btn btn-lg btn-dark">Reset Form</button>
+        </div>
+        <div class="col-md-6">
+            <button type="submit" class="w-100 btn btn-lg btn-success">Submit Form</button>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
